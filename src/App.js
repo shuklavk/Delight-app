@@ -10,8 +10,9 @@ import {
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar, Nav, NavbarBrand, NavDropdown, NavItem,} from "react-bootstrap";
-let activitiesData = require('./data.js');
 import Calendar from './Calendar';
+
+let activitiesData = require('./data.js');
 let data = require('./data.js');
 
 let dataReturn = activitiesData.activitiesData
@@ -127,11 +128,10 @@ function ActivitiesRow({items}) {
   return items.map(item => (
       <div className="activitiesContainer">
         <img src={item.image} className="imageCards"></img>
-
-        <div>
-          <h1>{item.name}</h1>
-          <p>{item.rating}</p>
-          <p>{item.review_count}</p>
+        <div className="activityText">
+          <p className="activityTitle" >{item.name}</p>
+          <p>{item.rating} / 5 Stars</p>
+          <p>{item.review_count} Reviews</p>
         </div>
         {/*<h1>{item.image.toString()}</h1>*/}
       </div>
@@ -153,14 +153,13 @@ function Activities() {
 
     <div className="activitiesContainerHigher">
       <div className="activitiesContainerLeft">
-        <h1> Activities </h1>
-
+        <h1>Best Activities during your X hour layover </h1>
         <ActivitiesRow items={dataReturn} />
       </div>
 
       <div className="activitiesContainerRight">
         <div>
-          <iframe src={url} width="475" height="500"></iframe>
+          <iframe src={url} width="500" height="500"></iframe>
         </div>
       </div>
 
