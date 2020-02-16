@@ -8,33 +8,33 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Navbar, Nav, NavbarBrand, NavDropdown, NavItem,} from "react-bootstrap";
+let data = require('./data.js');
 
-const nextPage = () => {
-  return(
-      <Redirect push to="/about" />
-  )
+
+async function load()
+{
+  let response = await fetch('someurltoAJsonFile.json');
+  let data = await response.json();
 }
+
+const getActivities = async () => {
+  console.log(data);
+  // let res = fetch('http://localhost:3001/home/')
+  //     .then((response) => {
+  //       let res1 =  response.json()
+  //       console.log(res1)
+  //       return res1
+  //     })
+}
+
+console.log(data)
 
 function App() {
   return (
       <Router>
         <div>
-          {/*<nav>*/}
-          {/*  <ul>*/}
-          {/*    <li>*/}
-          {/*      <Link to="/">Home</Link>*/}
-          {/*    </li>*/}
-          {/*    <li>*/}
-          {/*      <Link to="/selection">Selection</Link>*/}
-          {/*    </li>*/}
-          {/*    <li>*/}
-          {/*      <Link to="/users">Users</Link>*/}
-          {/*    </li>*/}
-          {/*  </ul>*/}
-          {/*</nav>*/}
-
-          {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
           <Switch>
             <Route path="/selection">
               <Selection />
@@ -52,6 +52,7 @@ function App() {
 }
 
 export default App;
+
 function Home() {
   return <div className="s01">
     <form>
@@ -87,30 +88,77 @@ function Home() {
 }
 
 function Selection() {
-  return <div className="s01">
-    <form>
-      <fieldset>
-        <legend>We have 5 cities you can layover at</legend>
-      </fieldset>
+  return <div>
+    <Navbar bg="white" expand="lg">
+      <Navbar.Brand href="#home">
+        <a href="http://localhost:3000/">
+        <img style={{height: 60}} src={require('./images/delight_logo.png')}/>
+        </a>
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+      </Navbar.Collapse>
+    </Navbar>
+    <div className="s02">
+      <div className="cardUI">
+        <form>
+          <fieldset>
+            <legend>We have 5 cities you can layover at</legend>
+          </fieldset>
+          <div className="inner-form">
+            <div className="input-field third-wrap">
+              <button className="btn-search" type="button" onClick={() => getActivities()}>GetRequest Activities</button>
 
-      <div className="inner-form">
-        <div className="input-field third-wrap">
-          <a href="http://localhost:3000/activities">
-            <button className="btn-search" type="button">Search</button>
-          </a>
-        </div>
+              <a href="http://localhost:3000/activities">
+                <button className="btn-search" type="button">Navigation to Activities</button>
+              </a>
+            </div>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   </div>
       ;
 }
 
+//
+// function ActivitiesRow() {
+//   return data.map(item => (
+//       <h1>{item.name}</h1>
+//   ));
+// }
+//
+
+
 function Activities() {
   return <div>
-    <h1> Actitivies</h1>
-    <button className="btn-search" type="button">GetRequest of Activities</button>
-    <a href="http://localhost:3000/">
-      <button className="btn-search" type="button">Activities</button>
-    </a>
-  </div>;
+    <Navbar bg="white" expand="lg">
+      <Navbar.Brand href="#home">
+        <a href="http://localhost:3000/">
+          <img style={{height: 60}} src={require('./images/delight_logo.png')}/>
+        </a>
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+      </Navbar.Collapse>
+    </Navbar>
+    <div className="s02">
+      <div className="cardUI">
+        <form>
+          <fieldset>
+            <legend>Activities</legend>
+          </fieldset>
+          <div className="inner-form">
+            <div className="input-field third-wrap">
+              <a href="http://localhost:3000/">
+                <button className="btn-search" type="button">GetRequest of Activities</button>
+                {/*<ActivitiesRow items-{items} />*/}
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+      ;
 }

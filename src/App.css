@@ -462,7 +462,25 @@ legend {
   -ms-flex-align: center;
       align-items: center;
   font-family: 'Poppins', sans-serif;
-  background: url("./images/Search_001.png");
+  background: url("./images/iceland_background.png");
+  background-size: cover;
+  background-position: center center;
+  padding: 15px;
+}
+
+
+.s02 {
+  min-height: 95vh;
+  display: -ms-flexbox;
+  display: flex;
+  /*flex: 1;*/
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  /*background-color: #F2F2F2;*/
+  background: url("./images/paris.jpeg");
   background-size: cover;
   background-position: center center;
   padding: 15px;
@@ -605,4 +623,11 @@ legend {
   .s01 form .inner-form .input-field.third-wrap .btn-search {
     font-size: 16px;
   }
+}
+
+.cardUI {
+  display: flex;
+  height: 300px;
+  width: 500px;
+  background-color: #FFFFFF ;
 }
