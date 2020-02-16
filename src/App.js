@@ -1,38 +1,61 @@
 import React from 'react';
-import logo from './logo.svg';
+// import x from 'airport-autocomplete.js';
+// import logo from './logo.svg';
 import './App.css';
+import Calendar from './Calendar'
 
-function App() {
-  return (
-    <div class="s01">
-      <form>
-        <fieldset>
-          <legend>Discover the Amazing City</legend>
-        </fieldset>
-        <div class="inner-form">
-          <div class="input-field first-wrap">
-            <input id="search" type="text" placeholder="Departure" />
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      startingDateInputClicked: false,
+
+    };
+    this.onClickHandler = this.onClickHandler.bind(this);
+  }
+  onClickHandler = () => {
+    this.setState((prevState) => ({
+      startingDateInputClicked: !prevState.startingDateInputClicked,
+    }));
+  }
+
+
+  render() {
+    return (
+      <div className="s01">
+        <form>
+          <fieldset>
+            <legend>Discover the Amazing City</legend>
+          </fieldset>
+          <div className="inner-form">
+            <div className="input-field first-wrap">
+              <input className="search" id='departureLocation' type="text" placeholder="Departure" />
+            </div>
+            <div className="input-field first-wrap">
+              <input className="search" id='arrivalLocation' type="text" placeholder="Arrival" />
+            </div>
+            <Calendar className='calendar'/>
+            <div className="input-field third-wrap">
+              <button className="btn-search" type="button">Search</button>
+            </div>
           </div>
-          <div class="input-field second-wrap">
-            <input id="location" type="text" placeholder="Time Departure" />
-          </div>
-        </div>
-        <div class="inner-form">
-          <div class="input-field first-wrap">
-            <input id="search" type="text" placeholder="Arrival" />
-          </div>
-          <div class="input-field second-wrap">
-            <input id="location" type="text" placeholder="Time Arrival" />
-          </div>
-        </div>
-        <div class="inner-form">
-          <div class="input-field third-wrap">
-            <button class="btn-search" type="button">Search</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  );
+          {/* <div className="inner-form">
+            <div className="input-field first-wrap">
+              <input className="search" id='arrivalLocation' type="text" placeholder="Arrival" />
+            </div>
+            <div className="input-field second-wrap">
+              <input className="location" type="text" placeholder="Time Arrival" />
+            </div>
+          </div> */}
+          {/* <div className="inner-form">
+            <div className="input-field third-wrap">
+              <button className="btn-search" type="button">Search</button>
+            </div>
+          </div> */}
+        </form>
+      </div>
+    );
+  }
 }
 
 export default App;
