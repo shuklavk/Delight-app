@@ -75,19 +75,6 @@ function Home() {
           </a>
           </div>
         </div>
-        {/* <div className="inner-form">
-          <div className="input-field first-wrap">
-            <input className="search" id='arrivalLocation' type="text" placeholder="Arrival" />
-          </div>
-          <div className="input-field second-wrap">
-            <input className="location" type="text" placeholder="Time Arrival" />
-          </div>
-        </div> */}
-        {/* <div className="inner-form">
-          <div className="input-field third-wrap">
-            <button className="btn-search" type="button">Search</button>
-          </div>
-        </div> */}
       </form>
     </div>
   );
