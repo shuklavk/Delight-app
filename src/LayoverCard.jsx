@@ -39,9 +39,9 @@ class LayoverCard extends React.Component {
             <Card.Body className="test2">
               <Card.Title className="test">{fullCityNameLayover}</Card.Title>
               <Card.Text>
-                Leave {fullCityNameOrigin} at XX:XX
+                Leave {fullCityNameOrigin} at {travelData.originDepartureTime.slice(-8)}
                 <br/>
-                Arrive in {fullCityNameDestination} at XX:XX
+                Arrive in {fullCityNameDestination} at {travelData.destinationArrivalTime.slice(-8)}
               </Card.Text>
               <a href="http://localhost:3000/activities">
                 <Button variant="primary" >Go!</Button>
