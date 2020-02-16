@@ -631,3 +631,45 @@ legend {
   width: 500px;
   background-color: #FFFFFF ;
 }
+
+.cardUIRight {
+  display: flex;
+  height: 300px;
+  width: 500px;
+  background-color: #FFFFFF ;
+  margin-right: 16px;
+}
+
+.imageCards {
+  width: 100px;
+  height: 100px;
+}
+
+.activitiesContainer {
+  width: 500px;
+  height: 120px;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: row;
+  margin-top: 16px;
+}
+
+.activitiesContainerHigher {
+  display: flex;
+  flex-direction: row;
+  background-color: yellow;
+}
+
+
+.activitiesContainerLeft {
+  flex: 8;
+  flex-direction: row;
+
+  background-color: #4272d7;
+
+}
+
+.activitiesContainerRight {
+  flex: 4;
+  flex-direction: row;
+}
