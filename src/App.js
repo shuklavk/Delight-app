@@ -12,8 +12,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, NavbarBrand, NavDropdown, NavItem, } from "react-bootstrap";
 import Calendar from './Calendar';
 const {format} = require('date-fns');
+let activitiesData = require('./data.js');
 let data = require('./data.js');
 
+let dataReturn = activitiesData.activitiesData
+const url = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100939.98555136316!2d-122.50763999826087!3d37.757814996332215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1581825516086!5m2!1sen!2sus';
 
 async function load() {
   let response = await fetch('someurltoAJsonFile.json');
@@ -21,16 +24,10 @@ async function load() {
 }
 
 const getActivities = async () => {
-  console.log(data);
-  // let res = fetch('http://localhost:3001/home/')
-  //     .then((response) => {
-  //       let res1 =  response.json()
-  //       console.log(res1)
-  //       return res1
-  //     })
+  console.log('getActivities:', dataReturn);
 }
 
-console.log(data)
+// console.log(activitiesData)
 
 function App() {
   return (
@@ -133,6 +130,12 @@ function Selection() {
       </Navbar.Collapse>
     </Navbar>
     <div className="s02">
+      <div className="cardUIRight">
+        <h3> Flight Information </h3>
+
+      </div>
+
+
       <div className="cardUI">
         <form>
           <fieldset>
@@ -143,7 +146,7 @@ function Selection() {
               <button className="btn-search" type="button" onClick={() => getActivities()}>GetRequest Activities</button>
 
               <a href="http://localhost:3000/activities">
-                <button className="btn-search" type="button">Navigation to Activities</button>
+                <button className="btn-search" type="button">San Francisco</button>
               </a>
             </div>
           </div>
@@ -154,14 +157,25 @@ function Selection() {
     ;
 }
 
-//
-// function ActivitiesRow() {
-//   return data.map(item => (
+// function TodoList({ items }) {
+//   return items.map(item => (
 //       <h1>{item.name}</h1>
 //   ));
 // }
-//
 
+function ActivitiesRow({items}) {
+  return items.map(item => (
+      <div className="activitiesContainer">
+        <img src={item.image} className="imageCards"></img>
+        <div className="activityText">
+          <p className="activityTitle" >{item.name}</p>
+          <p>{item.rating} / 5 Stars</p>
+          <p>{item.review_count} Reviews</p>
+        </div>
+        {/*<h1>{item.image.toString()}</h1>*/}
+      </div>
+  ));
+}
 
 function Activities() {
   return <div>
@@ -175,23 +189,27 @@ function Activities() {
       <Navbar.Collapse id="basic-navbar-nav">
       </Navbar.Collapse>
     </Navbar>
-    <div className="s02">
-      <div className="cardUI">
-        <form>
-          <fieldset>
-            <legend>Activities</legend>
-          </fieldset>
-          <div className="inner-form">
-            <div className="input-field third-wrap">
-              <a href="http://localhost:3000/">
-                <button className="btn-search" type="button">GetRequest of Activities</button>
-                {/*<ActivitiesRow items-{items} />*/}
-              </a>
-            </div>
-          </div>
-        </form>
+
+    <div className="activitiesContainerHigher">
+      <div className="activitiesContainerLeft">
+        <h1>Best Activities during your X hour layover </h1>
+        <div className="bubbleRow">
+          <div className="bubbleContainer"> Price</div>
+          <div className="bubbleContainer"> Length</div>
+          <div className="bubbleContainer"> Open Now</div>
+          <div className="bubbleContainer"> Free</div>
+        </div>
+        <ActivitiesRow items={dataReturn} />
       </div>
+
+      <div className="activitiesContainerRight">
+        <div>
+          <iframe src={url} width="500" height="500"></iframe>
+        </div>
+      </div>
+
     </div>
   </div>
     ;
 }
+
