@@ -9,13 +9,13 @@ import {
   Link
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Navbar, Nav, NavbarBrand, NavDropdown, NavItem,} from "react-bootstrap";
+import { Navbar, Nav, NavbarBrand, NavDropdown, NavItem, } from "react-bootstrap";
 import Calendar from './Calendar';
+const {format} = require('date-fns');
 let data = require('./data.js');
 
 
-async function load()
-{
+async function load() {
   let response = await fetch('someurltoAJsonFile.json');
   let data = await response.json();
 }
@@ -34,50 +34,90 @@ console.log(data)
 
 function App() {
   return (
-      <Router>
-        <div>
-          <Switch>
-            <Route path="/selection">
-              <Selection />
-            </Route>
-            <Route path="/activities">
-              <Activities />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
+    <Router>
+      <div>
+        <Switch>
+          <Route path="/selection">
+            <Selection />
+          </Route>
+          <Route path="/activities">
+            <Activities />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
 export default App;
 
-function Home() {
-  return (
-    <div className="s01">
-      <form>
-        <fieldset>
-          <legend>Discover the Amazing City</legend>
-        </fieldset>
-        <div className="inner-form">
-          <div className="input-field first-wrap">
-            <input className="search" id='departureLocation' type="text" placeholder="Departure" />
+class Home extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      departureDate: new Date(),
+      //TAKE THE TRIMMED DATE FOR API CALL
+      trimmedDate: new Date(),
+      departureLocation: "",
+      arrivalLocation: "",
+    }
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onDateChange = this.onDateChange.bind(this);
+  }
+
+  onSubmit() {
+    const destCode = document.getElementById("departureLocation").value.slice(0,3);
+    const arrivalCode = document.getElementById("arrivalLocation").value.slice(0,3);
+    this.setState({
+      departureLocation: destCode,
+      arrivalLocation : arrivalCode,
+    });
+
+  }
+
+  onDateChange(date) {
+    // const unformattedDepartureDate = date;
+    let event = new Date(date);
+    let newDate = JSON.stringify(event);
+    const trimmedDate = newDate.slice(1,11);
+    this.setState({
+      trimmedDate : trimmedDate,
+      departureDate: date,
+    })
+  }
+
+  render() {
+    return (
+      <div className="s01">
+        <form>
+          <fieldset>
+            <legend>Discover the Amazing City</legend>
+          </fieldset>
+          <div className="inner-form">
+            <div className="input-field first-wrap">
+              <input className="search"
+                id='departureLocation'
+                type="text"
+                placeholder="Departure"
+              />
+            </div>
+            <div className="input-field first-wrap">
+              <input className="search" id='arrivalLocation' type="text" placeholder="Arrival" />
+            </div>
+            <Calendar className='calendar' departureDate={this.state.departureDate} onDateChange={this.onDateChange}/>
+            <div className="input-field third-wrap">
+              {/* <a href="http://localhost:3000/selection"> */}
+                <button className="btn-search" type="button" onClick={() => { this.onSubmit() }}>Search</button>
+              {/* </a> */}
+            </div>
           </div>
-          <div className="input-field first-wrap">
-            <input className="search" id='arrivalLocation' type="text" placeholder="Arrival" />
-          </div>
-          <Calendar className='calendar'/>
-          <div className="input-field third-wrap">
-          <a href="http://localhost:3000/selection">
-            <button className="btn-search" type="button">Search</button>
-          </a>
-          </div>
-        </div>
-      </form>
-    </div>
-  );
+        </form>
+      </div>
+    );
+  }
 }
 
 function Selection() {
@@ -85,7 +125,7 @@ function Selection() {
     <Navbar bg="white" expand="lg">
       <Navbar.Brand href="#home">
         <a href="http://localhost:3000/">
-        <img style={{height: 60}} src={require('./images/delight_logo.png')}/>
+          <img style={{ height: 60 }} src={require('./images/delight_logo.png')} />
         </a>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -111,7 +151,7 @@ function Selection() {
       </div>
     </div>
   </div>
-      ;
+    ;
 }
 
 //
@@ -128,7 +168,7 @@ function Activities() {
     <Navbar bg="white" expand="lg">
       <Navbar.Brand href="#home">
         <a href="http://localhost:3000/">
-          <img style={{height: 60}} src={require('./images/delight_logo.png')}/>
+          <img style={{ height: 60 }} src={require('./images/delight_logo.png')} />
         </a>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -153,5 +193,5 @@ function Activities() {
       </div>
     </div>
   </div>
-      ;
+    ;
 }

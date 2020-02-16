@@ -1,0 +1,18 @@
+.cardHeader{
+  background-color:rgb(97,157,255);
+  width: 50%;
+  text-align: center;
+  color: white;
+}
+
+.test{
+  text-align: center;
+}
+
+.test2{
+  text-align: center;
+}
+
+.cardImg{
+  height: 400px;
+}

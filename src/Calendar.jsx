@@ -12,8 +12,8 @@ class Calendar extends Component {
     return (
       <div className="datePicker">
         <DatePicker
-          onChange={this.onChange}
-          value={this.state.date}
+          onChange={this.props.onDateChange}
+          value={this.props.departureDate}
         />
       </div>
     );
