@@ -3,9 +3,9 @@ import './LayoverCard.css';
 import { Card, Button } from 'react-bootstrap';
 import Unsplash from 'unsplash-js';
 import { toJson } from "unsplash-js";
-const unsplash = new Unsplash({ 
+const unsplash = new Unsplash({
   accessKey: "8h9wdatDrugd4YLMhWPGyDl-QL2UBQnSrJ3Sn3GKoaU",
-  secret: "nxRA_GcpDwKOMpj19ltHwkQ52VTyaEnbM7pbz98tUvA" 
+  secret: "nxRA_GcpDwKOMpj19ltHwkQ52VTyaEnbM7pbz98tUvA"
 });
 
 var airports = require('airport-codes');
@@ -33,18 +33,23 @@ class LayoverCard extends React.Component {
     const fullCityNameDestination = (airports.findWhere({ iata: travelData.destination }).get('city'));
     this.getImages(fullCityNameLayover);
     return (
-      <Card style={{ width: '25rem' }}>
-        <Card.Img variant="top" className="cardImg" src={this.state.imgURL} />
-        <Card.Body className="test2">
-          <Card.Title className="test">{fullCityNameLayover}</Card.Title>
-          <Card.Text>
-            Leave {fullCityNameOrigin} at XX:XX
-            <br/>
-            Arrive in {fullCityNameDestination} at XX:XX
-          </Card.Text>
-          <Button variant="primary" >Go!</Button>
-        </Card.Body>
-      </Card>
+        <div>
+          <Card style={{ width: '20rem' }}>
+            <Card.Img variant="top" className="cardImg" src={this.state.imgURL} />
+            <Card.Body className="test2">
+              <Card.Title className="test">{fullCityNameLayover}</Card.Title>
+              <Card.Text>
+                Leave {fullCityNameOrigin} at XX:XX
+                <br/>
+                Arrive in {fullCityNameDestination} at XX:XX
+              </Card.Text>
+              <a href="http://localhost:3000/activities">
+                <Button variant="primary" >Go!</Button>
+              </a>
+            </Card.Body>
+          </Card>
+        </div>
+
       // <Card className="text-center">
       //   <Card.Header>Alaska</Card.Header>
       //   <Card.Body>

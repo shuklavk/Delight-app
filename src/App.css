@@ -734,3 +734,8 @@ align-items: center;
   padding-bottom: 8px;
   padding: 4px;
 }
+
+.carouselContainer {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}

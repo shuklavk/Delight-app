@@ -11,6 +11,10 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, NavbarBrand, NavDropdown, NavItem, } from "react-bootstrap";
 import Calendar from './Calendar';
+import LayoverCard from "./LayoverCard";
+import sampleData from './sampleData'
+import LayoverCarousel from "./LayoverCarousel";
+
 const {format} = require('date-fns');
 let activitiesData = require('./data.js');
 let data = require('./data.js');
@@ -35,7 +39,7 @@ function App() {
       <div>
         <Switch>
           <Route path="/selection">
-            <Selection />
+            <LayoverCarousel />
           </Route>
           <Route path="/activities">
             <Activities />
@@ -106,9 +110,9 @@ class Home extends React.Component {
             </div>
             <Calendar className='calendar' departureDate={this.state.departureDate} onDateChange={this.onDateChange}/>
             <div className="input-field third-wrap">
-              {/* <a href="http://localhost:3000/selection"> */}
+               <a href="http://localhost:3000/selection">
                 <button className="btn-search" type="button" onClick={() => { this.onSubmit() }}>Search</button>
-              {/* </a> */}
+               </a>
             </div>
           </div>
         </form>
