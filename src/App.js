@@ -92,31 +92,44 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className="s01">
-        <form>
-          <fieldset>
-            <legend>Discover the Amazing City</legend>
-          </fieldset>
-          <div className="inner-form">
-            <div className="input-field first-wrap">
-              <input className="search"
-                id='departureLocation'
-                type="text"
-                placeholder="Departure"
-              />
-            </div>
-            <div className="input-field first-wrap">
-              <input className="search" id='arrivalLocation' type="text" placeholder="Arrival" />
-            </div>
-            <Calendar className='calendar' departureDate={this.state.departureDate} onDateChange={this.onDateChange}/>
-            <div className="input-field third-wrap">
-               <a href="http://localhost:3000/selection">
-                <button className="btn-search" type="button" onClick={() => { this.onSubmit() }}>Search</button>
-               </a>
-            </div>
+        <div>
+          <Navbar bg="white" expand="lg">
+            <Navbar.Brand href="#home">
+              <a href="http://localhost:3000/">
+                <img style={{ height: 60 }} src={require('./images/delight_logo.png')} />
+              </a>
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+            </Navbar.Collapse>
+          </Navbar>
+          <div className="s01">
+            <form>
+              <fieldset>
+                <legend>Discover the Amazing City</legend>
+              </fieldset>
+              <div className="inner-form">
+                <div className="input-field first-wrap">
+                  <input className="search"
+                         id='departureLocation'
+                         type="text"
+                         placeholder="Departure"
+                  />
+                </div>
+                <div className="input-field first-wrap">
+                  <input className="search" id='arrivalLocation' type="text" placeholder="Arrival" />
+                </div>
+                <Calendar className='calendar' departureDate={this.state.departureDate} onDateChange={this.onDateChange}/>
+                <div className="input-field third-wrap">
+                  <a href="http://localhost:3000/selection">
+                    <button className="btn-search" type="button" onClick={() => { this.onSubmit() }}>Search</button>
+                  </a>
+                </div>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
+        </div>
+
     );
   }
 }
@@ -196,7 +209,7 @@ function Activities() {
 
     <div className="activitiesContainerHigher">
       <div className="activitiesContainerLeft">
-        <h1>Best Activities during your X hour layover </h1>
+        <h1>Best Activities during your 10 hour layover </h1>
         <div className="bubbleRow">
           <div className="bubbleContainer"> Price</div>
           <div className="bubbleContainer"> Length</div>
