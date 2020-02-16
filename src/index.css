@@ -11,3 +11,56 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+#departureLocation {
+  cursor: pointer;
+}
+  .autocomplete-result:hover {
+    background-color: #f2f2fc; }
+
+#arrivalLocation {
+  position: inherit;
+  background-color: #fff;
+  z-index: 100;
+  border-radius: 0px 0px 3px 3px;
+  box-shadow: -2px 3px 18px 0px rgba(0, 0, 0, 0.75); }
+
+  .border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: #0077FF;
+    transform: scaleX(0);
+    transform-origin: 0 0;
+    transition: all .15s ease; }
+
+      
+.autocomplete-result {
+  cursor: pointer;
+  margin-left: 2%; }
+  .autocomplete-result:hover {
+    background-color: #f2f2fc; }
+
+    .autocomplete-results {
+      position: inherit;
+      background-color: #fff;
+      z-index: 100;
+      border-radius: 0px 0px 3px 3px;
+      box-shadow: -2px 3px 18px 0px rgba(0, 0, 0, 0.75); }
+
+      .autocomplete-wrapper.departureLocation {
+        height: 100%;
+    }
+
+    .autocomplete-wrapper.arrivalLocation {
+      height: 100%;
+  }
+
+  .autocomplete-results.departureLocation{
+    position: relative;
+  }
+
+  .autocomplete-results.arrivalLocation{
+    position: relative;
+  }

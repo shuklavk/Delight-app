@@ -11,6 +11,8 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar, Nav, NavbarBrand, NavDropdown, NavItem,} from "react-bootstrap";
 let activitiesData = require('./data.js');
+import Calendar from './Calendar';
+let data = require('./data.js');
 
 let dataReturn = activitiesData.activitiesData
 const url = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100939.98555136316!2d-122.50763999826087!3d37.757814996332215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1581825516086!5m2!1sen!2sus';
@@ -50,37 +52,29 @@ function App() {
 export default App;
 
 function Home() {
-  return <div className="s01">
-    <form>
-      <fieldset>
-        <legend>Discover the Amazing City</legend>
-      </fieldset>
-      <div className="inner-form">
-        <div className="input-field first-wrap">
-          <input id="search" type="text" placeholder="Departure"/>
-        </div>
-        <div className="input-field second-wrap">
-          <input id="location" type="text" placeholder="Time Departure"/>
-        </div>
-      </div>
-      <div className="inner-form">
-        <div className="input-field first-wrap">
-          <input id="search" type="text" placeholder="Arrival"/>
-        </div>
-        <div className="input-field second-wrap">
-          <input id="location" type="text" placeholder="Time Arrival"/>
-        </div>
-      </div>
-      <div className="inner-form">
-        <div className="input-field third-wrap">
+  return (
+    <div className="s01">
+      <form>
+        <fieldset>
+          <legend>Discover the Amazing City</legend>
+        </fieldset>
+        <div className="inner-form">
+          <div className="input-field first-wrap">
+            <input className="search" id='departureLocation' type="text" placeholder="Departure" />
+          </div>
+          <div className="input-field first-wrap">
+            <input className="search" id='arrivalLocation' type="text" placeholder="Arrival" />
+          </div>
+          <Calendar className='calendar'/>
+          <div className="input-field third-wrap">
           <a href="http://localhost:3000/selection">
             <button className="btn-search" type="button">Search</button>
           </a>
+          </div>
         </div>
-      </div>
-    </form>
-  </div>
-      ;
+      </form>
+    </div>
+  );
 }
 
 function Selection() {
