@@ -713,3 +713,22 @@ align-items: center;
 .activityText {
   padding-left: 16px;
 }
+.bubbleRow {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.bubbleContainer {
+  height: 50px;
+  width: 100px;
+  display: flex;
+  border: 1px solid lightgrey;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  justify-content: center;
+  align-content: center;
+  margin-right: 16px;
+  padding-top: 4px;
+}

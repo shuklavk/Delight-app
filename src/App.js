@@ -154,6 +154,12 @@ function Activities() {
     <div className="activitiesContainerHigher">
       <div className="activitiesContainerLeft">
         <h1>Best Activities during your X hour layover </h1>
+        <div className="bubbleRow">
+          <div className="bubbleContainer"> Price</div>
+          <div className="bubbleContainer"> Length</div>
+          <div className="bubbleContainer"> Open Now</div>
+          <div className="bubbleContainer"> Free</div>
+        </div>
         <ActivitiesRow items={dataReturn} />
       </div>
 
