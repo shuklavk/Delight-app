@@ -720,7 +720,7 @@ align-items: center;
 }
 
 .bubbleContainer {
-  height: 50px;
+  height: 30px;
   width: 100px;
   display: flex;
   border: 1px solid lightgrey;
@@ -730,5 +730,7 @@ align-items: center;
   justify-content: center;
   align-content: center;
   margin-right: 16px;
-  padding-top: 4px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding: 4px;
 }
